@@ -69,8 +69,8 @@ const restaurants = [
         "price": "$$$",
         "image": "https://www.biteofthebest.com/wp-content/uploads/IMG_1754-scaled.jpeg"
     },];
-    
-    //Fuse.js
+
+//Fuse.js
 const fuseOptions = {
     keys: ['name', 'type', 'borough'], 
     includeScore: true 
@@ -104,11 +104,12 @@ function updateRestaurants() {
     if (query.trim() === '') {
         filteredRestaurants = restaurants;
     } else {
-        filteredRestaurants = fuse.search(query).map(result => result.item);
+        filteredRestaurants = searchRestaurants(query);
     }
 
     displayRestaurants(filteredRestaurants);
 }
+
 window.onload = () => {
     const searchInput = document.getElementById('search-input');
     searchInput.addEventListener('input', updateRestaurants);
